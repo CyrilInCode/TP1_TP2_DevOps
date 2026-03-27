@@ -1,11 +1,11 @@
 # Build stage
-FROM openjdk:21-jdk-slim AS builder
+FROM gradle:8.5-jdk21 AS builder
 WORKDIR /app
 COPY . .
-RUN ./gradlew clean build -x test
+RUN gradle clean build -x test --no-daemon
 
 # Runtime stage
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 EXPOSE 8080
