@@ -1,4 +1,4 @@
-name: CI - Kubernetes Integration Tests
+name: CI
 
 on:
   push:
@@ -12,7 +12,8 @@ permissions:
   actions: read
 
 jobs:
-  build-and-test:
+  build-tp1:
+    name: TP1 - HelloService
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -27,14 +28,38 @@ jobs:
           java-version: '21'
           cache: 'gradle'
 
-      - name: Build Java services
+      - name: Build HelloService
         run: |
-          cd ./MyService
+          cd ./tp1/HelloService
           chmod +x gradlew
           ./gradlew build
 
-      - name: Build Docker images
+      - name: Build Docker image (TP1)
         run: |
-          docker build -t myservice:latest -f MyService/Dockerfile .
+          docker build -t helloservice:latest ./tp1/HelloService
 
+  build-tp2:
+    name: TP2 - MyService
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'gradle'
+
+      - name: Build MyService
+        run: |
+          cd ./tp2/MyService
+          chmod +x gradlew
+          ./gradlew build
+
+      - name: Build Docker image (TP2)
+        run: |
+          docker build -t myservice:latest ./tp2/MyService
