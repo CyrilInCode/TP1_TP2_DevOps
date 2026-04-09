@@ -63,3 +63,25 @@ jobs:
       - name: Build Docker image (TP2)
         run: |
           docker build -t myservice:latest ./tp2/MyService
+
+  build-tp3:
+    name: TP3 - MyService (JUnit Tests)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'gradle'
+
+      - name: Run tests
+        run: |
+          cd ./tp3/MyService
+          chmod +x gradlew
+          ./gradlew test
