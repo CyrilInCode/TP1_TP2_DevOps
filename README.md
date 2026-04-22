@@ -1,5 +1,10 @@
 # DevOps
 
+[![CI](https://github.com/CyrilInCode/TP1_TP2_DevOps/actions/workflows/action.yml/badge.svg)](https://github.com/CyrilInCode/TP1_TP2_DevOps/actions/workflows/action.yml)
+[![codecov](https://codecov.io/gh/CyrilInCode/TP1_TP2_DevOps/branch/main/graph/badge.svg)](https://codecov.io/gh/CyrilInCode/TP1_TP2_DevOps)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=CyrilInCode_TP1_TP2_DevOps&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=CyrilInCode_TP1_TP2_DevOps)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=CyrilInCode_TP1_TP2_DevOps&metric=coverage)](https://sonarcloud.io/summary/new_code?id=CyrilInCode_TP1_TP2_DevOps)
+
 # Multi-stage Docker build
 
 https://github.com/charroux/rent/blob/main/MyService/Dockerfile
