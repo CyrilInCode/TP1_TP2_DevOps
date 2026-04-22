@@ -3,6 +3,7 @@ plugins {
 	id 'jacoco'
 	id 'org.springframework.boot' version '3.2.0'
 	id 'io.spring.dependency-management' version '1.1.4'
+	id 'org.sonarqube' version '5.0.0.4638'
 }
 
 group = 'com.example'
@@ -46,5 +47,18 @@ jacocoTestReport {
 				'**/entities/**'
 			])
 		}))
+	}
+}
+
+sonar {
+	properties {
+		property 'sonar.projectKey', 'CyrilInCode_TP1_TP2_DevOps'
+		property 'sonar.organization', 'cyrilincode'
+		property 'sonar.host.url', 'https://sonarcloud.io'
+		property 'sonar.sources', 'src/main/java'
+		property 'sonar.tests', 'src/test/java'
+		property 'sonar.java.binaries', 'build/classes/java/main'
+		property 'sonar.coverage.jacoco.xmlReportPaths', 'build/reports/jacoco/test/jacocoTestReport.xml'
+		property 'sonar.coverage.exclusions', '**/MyServiceApplication.java,**/entities/**'
 	}
 }
